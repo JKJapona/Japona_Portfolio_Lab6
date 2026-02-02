@@ -1,6 +1,6 @@
-# 🚀 Jheric Kent - Portfolio Project Documentation
+# 🚀 Documentation
 
-This repository contains a professional personal portfolio built to master **Bootstrap 5** and **Advanced Custom CSS**. This document provides a detailed, line-by-line explanation of every technical component used in the project for future reference and learning.
+This document provides a detailed, line-by-line explanation of every technical component used in the project for future reference and learning.
 
 ---
 
@@ -64,6 +64,33 @@ Where Bootstrap provides the "skeleton," custom CSS provides the "personality." 
 
 ### E. Advanced Image Handling
 * **`object-fit: cover`**: This is a critical property for professional web design. It ensures that images (like project screenshots) fill their assigned `200px` height without being stretched, squashed, or distorted, regardless of their original aspect ratio.
+
+---
+
+## 🛠️ 3. Visual Layout Debugging (The "Invisible Boxes")
+
+To master the grid, I visualized a **Debug Mode** that reveals the underlying architecture of the site. Below are the visual representations of how Bootstrap's "invisible boxes" are structured across different sections.
+
+### Section Architecture
+* **Blue Outlines**: `.container` (Responsive width controller)
+* **Red Outlines**: `.row` (The flexbox wrapper)
+* **Green Outlines**: `.col-*` (The individual grid units)
+
+#### 🏠 Home Section
+![Home Layout Debug](./Debug_Layout/Home.png)
+*Logic:* Shows the `.align-items-center` class perfectly centering the text and the profile image vertically.
+
+#### 🛠️ Services Section
+![Services Layout Debug](./Debug_Layout/Service.png)
+*Logic:* Visualizes the `.g-4` gutter spacing between the four `.col-md-3` expertise cards.
+
+#### 📁 Projects Section
+![Projects Layout Debug](./Debug_Layout/Project.png)
+*Logic:* Demonstrates how `.col-md-4` breaks the 12-unit grid into three equal parts.
+
+#### 📧 Contact Section
+![Contact Layout Debug](./Debug_Layout/Contact.png)
+*Logic:* Shows the asymmetrical grid using `.col-lg-5` for info and `.col-lg-7` for the contact form.
 
 ---
 
