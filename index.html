@@ -20,11 +20,37 @@
     }
 
     body {
-        padding-top: 50px;
+        padding-top: 56px;
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
         color: #333;
+    }
+
+    html, body {
         overflow-x: hidden;
         width: 100%;
+        position: relative;
+        background-color: #212529;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    #services, #education, #contact {
+        background-color: #ffffff !important;
+    }
+
+    #certifications, #projects {
+        background-color: #f8f9fa !important;
+    }
+
+    footer {
+    background-color: #212529 !important;
+    position: relative;
+}
+
+    img {
+        max-width: 100%;
+        height: auto;
     }
 
     section {
@@ -56,7 +82,6 @@
 
     .navbar-nav .nav-link:hover {
         color: #fff !important;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     }
 
     .hero {
@@ -73,7 +98,7 @@
     }
 
     .hero img:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 
     .hero .btn:hover {
@@ -96,11 +121,45 @@
         height: 100%;
     }
 
-    .custom-card:hover, 
-    .custom-card-certification:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    }
+/* 1. Prepare the card for the shine (hidden overflow is key) */
+.custom-card, 
+.custom-card-certification {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 2. Create the shine element */
+.custom-card::before,
+.custom-card-certification::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start off-screen */
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg); /* Slant the shine */
+    transition: none;
+}
+
+/* 3. Trigger the lift and the shine on hover */
+.custom-card:hover, 
+.custom-card-certification:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.custom-card:hover::before,
+.custom-card-certification:hover::before {
+    left: 150%; /* Sweep across to the other side */
+    transition: left 0.7s ease-in-out;
+}
 
     .custom-card .fs-1 {
         transition: var(--transition-main);
@@ -210,29 +269,39 @@
         z-index: 9999 !important;
     }
 
+    .navbar-brand {
+        font-size: 1.8rem;
+        letter-spacing: -1px;
+        background: linear-gradient(45deg, #fff, #adb5bd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: var(--transition-main);
+    }
+
+    .navbar-brand:hover {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+    }
+
     .navbar-toggler:focus {
         box-shadow: none !important;
         outline: none !important;
     }
 
-    /* 3. Mobile-Specific Spacing Fixes */
-    @media (max-width: 991px) {
-        body {
-            padding-top: 50px; /* Gives the body more room so the navbar doesn't cover content */
-        }
-        
-        section {
-            scroll-margin-top: 70px; /* Ensures titles don't hide under the bar when clicking links */
-        }
-
-        .hero {
-            padding: 50px 0; /* Tightens hero padding for better mobile framing */
-        }
-
-        .hero img {
-            margin-top: 20px; /* Pushes your face down away from the navbar */
-        }
+@media (max-width: 991px) {
+    body {
+        padding-top: 56px;
     }
+    
+    section {
+        scroll-margin-top: 56px; 
+        padding: 60px 0;
+    }
+
+    .hero {
+        padding: 40px 0;
+    }
+}
 </style>
 </head>
 
@@ -342,44 +411,43 @@
         </div>
     </section>
 
-<section id="education">
-    <div class="container">
-        <h2 class="text-center mb-5 fw-bold">Education</h2>
-        <div class="row g-4 justify-content-center">
-            
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="custom-card">
-                    <span class="badge bg-dark mb-2 w-25">Tertiary</span>
-                    <h5 class="fw-bold">BS in Information Technology</h5>
-                    <p class="mb-1 text-dark small"><strong>University of Mindanao</strong></p>
-                    <p class="text-muted extra-small">2023 – Present</p>
-                    <p class="small">Focused on web development and programming fundamentals.</p>
+    <section id="education">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Education</h2>
+            <div class="row g-4 justify-content-center">
+                
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="custom-card">
+                        <span class="badge bg-dark mb-2 w-25">Tertiary</span>
+                        <h5 class="fw-bold">BS in Information Technology</h5>
+                        <p class="mb-1 text-dark small"><strong>University of Mindanao</strong></p>
+                        <p class="text-muted extra-small">2023 – Present</p>
+                        <p class="small">Focused on computers and programming fundamentals.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="custom-card">
-                    <span class="badge bg-secondary mb-2 w-25">Secondary</span>
-                    <h5 class="fw-bold">Senior High School</h5>
-                    <p class="mb-1 text-dark small"><strong>Rizal Memorial Colleges, Inc.</strong></p>
-                    <p class="text-muted extra-small">Graduated 2023</p>
-                    <p class="small">Completed academic track with preparatory technical skills.</p>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="custom-card">
+                        <span class="badge bg-secondary mb-2 w-25">Secondary</span>
+                        <h5 class="fw-bold">Junior & Senior High School</h5>
+                        <p class="mb-1 text-dark small"><strong>Rizal Memorial Colleges, Inc.</strong></p>
+                        <p class="text-muted extra-small">2018 - 2023</p> <p class="small">Completed full secondary education with an academic track and preparatory technical skills.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="custom-card">
-                    <span class="badge bg-light text-dark border mb-2 w-25">Primary</span>
-                    <h5 class="fw-bold">Elementary Education</h5>
-                    <p class="mb-1 text-dark small"><strong>Pedro S. Carriedo ES</strong></p>
-                    <p class="text-muted extra-small">Foundation Years</p>
-                    <p class="small">Foundational years of basic education and character building.</p>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="custom-card">
+                        <span class="badge bg-light text-dark border mb-2 w-25">Primary</span>
+                        <h5 class="fw-bold">Elementary Education</h5>
+                        <p class="mb-1 text-dark small"><strong>Pedro S. Carriedo ES</strong></p>
+                        <p class="text-muted extra-small">2012 - 2018</p>
+                        <p class="small">Foundational years of basic education and character building.</p>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section id="projects">
         <div class="container">
@@ -469,7 +537,7 @@
     <footer class="text-center py-4 bg-dark text-white">
         <div class="container">
             <div class="mb-3">
-                <a href="#" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.facebook.com/JhericKentJapona100" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
                 <a href="https://github.com/JKJapona" target="_blank" class="text-white me-3 fs-4"><i class="bi bi-github"></i></a>
                 <a href="#" class="text-white me-3 fs-4"><i class="bi bi-linkedin"></i></a>
                 <a href="mailto:j.japona.558573@umindanao.edu.ph" class="text-white fs-4"><i class="bi bi-envelope-fill"></i></a>
