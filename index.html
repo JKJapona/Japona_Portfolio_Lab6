@@ -6,6 +6,7 @@
     <title>Portfolio - Jheric Kent Japona</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
         html {
@@ -36,7 +37,7 @@
         }
 
         .hero img {
-            animation: bobbing 5s ease-in-out infinite;
+            animation: bobbing 3s ease-in-out infinite;
             transition: transform 0.5s ease;
         }
 
@@ -49,17 +50,38 @@
             background: white;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             height: 100%;
             display: flex;
             flex-direction: column;
         }
 
-        .custom-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        .custom-card-certification {
+            background: white;
+            aspect-ratio: 1753 / 1238;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.158);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            margin: 0 auto 30px auto;
+            display: block;
+        }
+
+        .custom-card-certification img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .custom-card:hover, .custom-card-certification:hover {
+            transform: translateY(-10px);
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
 
         .fs-1 {
@@ -156,6 +178,8 @@
             <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+            <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
             <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
@@ -163,7 +187,8 @@
         </div>
     </nav>
 
-  <section id="home" class="hero">
+<!-- 🔹 Home Section -->
+<section id="home" class="hero">
     <div class="container">
         <div class="row align-items-center text-center text-md-start">
             <div class="col-md-6 order-last order-md-first">
@@ -179,8 +204,9 @@
             </div>
         </div>
     </div>
-  </section>
+</section>
 
+<!-- 🔹 Services Section -->
 <section id="services">
     <div class="container">
         <h2 class="text-center mb-5 fw-bold">My Expertise</h2>
@@ -189,35 +215,98 @@
                 <div class="custom-card">
                     <div class="fs-1 mb-3">🌐</div>
                     <h5 class="fw-bold">Web Dev</h5>
-                    <p class="text-muted small">Full-stack builds using HTML, CSS, JS, and MySQL database management.</p>
+                    <p class="text-muted">Full-stack builds using HTML, CSS, JS, and MySQL database management.</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="custom-card">
                     <div class="fs-1 mb-3">💻</div>
                     <h5 class="fw-bold">Software</h5>
-                    <p class="text-muted small">Logic-driven application scripting and automation in Java & Python.</p>
+                    <p class="text-muted">Logic-driven application scripting and automation in Java & Python.</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="custom-card">
                     <div class="fs-1 mb-3">📸</div>
                     <h5 class="fw-bold">Multimedia</h5>
-                    <p class="text-muted small">Professional Photography, Video Editing, and Photoshop manipulation.</p>
+                    <p class="text-muted">Professional Photography, Video Editing, and Photoshop manipulation.</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="custom-card">
                     <div class="fs-1 mb-3">✍️</div>
                     <h5 class="fw-bold">Technical Writing</h5>
-                    <p class="text-muted small">Clear documentation, creative storytelling, and content strategy.</p>
+                    <p class="text-muted">Clear documentation, creative storytelling, and content strategy.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-  <section id="projects">
+<!-- 🔹 Certification Section -->
+<section id="certifications" class="section-padding bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Certifications</h2>
+        <div class="row text-center">
+            <div class="row g-4">
+                <div class="col-md-6 col-sm-6">
+                    <div class="custom-card-certification p-0 overflow-hidden">
+                        <img src="Images/Pearson-Certificate.png" class="card-img-top" alt="Certificate">
+                        <a href="https://www.credly.com/badges/6b76603c-387a-4e6d-a18b-986fe5b54aed/public_url" target="_blank" class="stretched-link"></a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="custom-card-certification p-0 overflow-hidden">
+                        <img src="https://api2.sololearn.com/v2/certificates/CC-2A7GROBN/image/jpg?t=638998269838284330" class="card-img-top" alt="Certificate">
+                        <a href="https://www.sololearn.com/certificates/CC-2A7GROBN" target="_blank" class="stretched-link"></a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="custom-card-certification p-0 overflow-hidden">
+                        <img src="https://api2.sololearn.com/v2/certificates/CC-0PS1HMBI/image/jpg?t=638998272901058800" class="card-img-top" alt="Certificate">
+                        <a href="https://www.sololearn.com/en/certificates/CC-0PS1HMBI" target="_blank" class="stretched-link"></a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="custom-card-certification p-0 overflow-hidden">
+                        <img src="https://api2.sololearn.com/v2/certificates/CC-HXDZTCJW/image/jpg?t=638998274803676410" class="card-img-top" alt="Certificate">
+                        <a href="https://www.sololearn.com/certificates/CC-HXDZTCJW" target="_blank" class="stretched-link"></a>
+                    </div>
+                </div>
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 🔹 Education Section -->
+<section id="education" class="section-padding">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Education</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="custom-card">
+                    <h4>Bachelor of Science in Information Technology</h4>
+                    <p class="mb-1"><strong>University / College Name</strong></p>
+                    <p class="text-muted">2023 – Present</p>
+                    <p>
+                        Focused on web development, programming fundamentals,
+                        and information security concepts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 🔹 Projects Section -->
+<section id="projects">
     <div class="container">
         <h2 class="text-center mb-5 fw-bold">Featured Projects</h2>
         <div class="row g-4">
@@ -226,7 +315,7 @@
                     <img src="images/Google-Sites.png" class="card-img-top" alt="Google Sites Portfolio">
                     <div class="project-body">
                         <h5 class="fw-bold">Google Sites Portfolio</h5>
-                        <p class="text-muted small">A google site portfolio project.</p>
+                        <p class="text-muted">A google site portfolio project.</p>
                         <a href="https://sites.google.com/umindanao.edu.ph/japona558573/home" target="_blank" class="btn btn-outline-dark btn-sm w-100">View Site</a>
                     </div>
                 </div>
@@ -236,7 +325,7 @@
                     <img src="images/Appointer.png" class="card-img-top" alt="Appointer">
                     <div class="project-body">
                         <h5 class="fw-bold">Appointer</h5>
-                        <p class="text-muted small">Medical appointment scheduling system.</p>
+                        <p class="text-muted">Medical appointment scheduling system.</p>
                         <a href="https://github.com/JKJapona/Appointer" target="_blank" class="btn btn-outline-dark btn-sm w-100">View Repo</a>
                     </div>
                 </div>
@@ -246,7 +335,7 @@
                     <img src="images/Login.png" class="card-img-top" alt="Login System">
                     <div class="project-body">
                         <h5 class="fw-bold">Auth System</h5>
-                        <p class="text-muted small">Secure frontend dashboard login interface.</p>
+                        <p class="text-muted">Secure frontend dashboard login interface.</p>
                         <a href="https://github.com/JKJapona/Japona-Login_Dashboard-IT9" target="_blank" class="btn btn-outline-dark btn-sm w-100">View Repo</a>
                     </div>
                 </div>
@@ -255,6 +344,7 @@
     </div>
 </section>
 
+<!-- 🔹 Contact Section -->
 <section id="contact">
     <div class="container">
         <h2 class="text-center mb-5 fw-bold">Get In Touch</h2>
@@ -301,9 +391,16 @@
         </div>
     </div>
 </section>
-
 <footer class="text-center py-4 bg-dark text-white">
-    <p class="mb-0 small">© 2026 Jheric Kent Japona | All Rights Reserved.</p>
+    <div class="container">
+        <div class="mb-3">
+            <a href="#" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white me-3 fs-4"><i class="bi bi-github"></i></a>
+            <a href="#" class="text-white me-3 fs-4"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-white fs-4"><i class="bi bi-envelope-fill"></i></a>
+        </div>
+        <p class="mb-0 small">© 2026 Jheric Kent Japona | All Rights Reserved.</p>
+    </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
