@@ -73,8 +73,7 @@
     }
 
     .hero img:hover {
-        animation-play-state: paused;
-        transform: scale(1.05);
+        transform: scale(1.1);
     }
 
     .hero .btn:hover {
@@ -205,6 +204,34 @@
         }
         .hero h1 { font-size: 2.2rem; }
         .col-sm-12 { width: 100%; }
+    }
+
+    .navbar {
+        z-index: 9999 !important;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    /* 3. Mobile-Specific Spacing Fixes */
+    @media (max-width: 991px) {
+        body {
+            padding-top: 50px; /* Gives the body more room so the navbar doesn't cover content */
+        }
+        
+        section {
+            scroll-margin-top: 70px; /* Ensures titles don't hide under the bar when clicking links */
+        }
+
+        .hero {
+            padding: 50px 0; /* Tightens hero padding for better mobile framing */
+        }
+
+        .hero img {
+            margin-top: 20px; /* Pushes your face down away from the navbar */
+        }
     }
 </style>
 </head>
