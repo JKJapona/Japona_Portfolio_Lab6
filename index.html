@@ -5,404 +5,452 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portfolio - Jheric Kent Japona</title>
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
+    :root {
+        --primary-dark: #212529;
+        --bg-light: #f8f9fa;
+        --transition-main: all 0.3s ease;
+    }
 
-        body {
-            padding-top: 50px;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            color: #333;
-        }
+    html {
+        scroll-behavior: smooth;
+    }
 
-        section {
-            padding: 100px 0;
-            scroll-margin-top: 70px;
-        }
+    body {
+        padding-top: 50px;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        color: #333;
+        overflow-x: hidden;
+        width: 100%;
+    }
 
-        @keyframes bobbing {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-        }
+    section {
+        padding: 100px 0;
+        scroll-margin-top: 50px;
+    }
 
+    .navbar-nav .nav-link {
+        position: relative;
+        padding: 8px 15px;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: #fff;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .navbar-nav .nav-link:hover::after {
+        width: 80%;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #fff !important;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .hero {
+        background-color: var(--primary-dark);
+        color: white;
+        padding: 120px 0;
+    }
+
+    .hero img {
+        max-width: 320px;
+        border: 5px solid rgba(255, 255, 255, 0.1);
+        animation: bobbing 3s ease-in-out infinite;
+        transition: transform 0.5s ease;
+    }
+
+    .hero img:hover {
+        animation-play-state: paused;
+        transform: scale(1.05);
+    }
+
+    .hero .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .custom-card, 
+    .custom-card-certification {
+        background: white;
+        border-radius: 15px;
+        transition: var(--transition-main);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .custom-card {
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        height: 100%;
+    }
+
+    .custom-card:hover, 
+    .custom-card-certification:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .custom-card .fs-1 {
+        transition: var(--transition-main);
+        display: inline-block;
+    }
+
+    .custom-card:hover .fs-1 {
+        transform: scale(1.2) rotate(5deg);
+    }
+
+    .custom-card-certification {
+        width: 100%; 
+        aspect-ratio: 1753 / 1238;
+        margin-bottom: 20px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-card-certification img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    #projects .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .project-body {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .project-body .btn:hover {
+        background-color: var(--primary-dark);
+        color: white;
+        transform: scale(1.02);
+    }
+
+    .contact-info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-info-icon {
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-dark);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: 15px;
+        font-size: 1.2rem;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary-dark);
+        box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.1);
+    }
+
+    .btn {
+        transition: var(--transition-main) !important;
+    }
+
+    #services { background-color: #ffffff; }
+    #projects { background-color: var(--bg-light); }
+    #contact { background-color: #ffffff; }
+
+    @keyframes bobbing {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 991px) {
+        .navbar-nav .nav-link::after {
+            display: none;
+        }
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+            padding-left: 25px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        section { padding: 60px 0; }
         .hero img {
-            animation: bobbing 3s ease-in-out infinite;
-            transition: transform 0.5s ease;
-        }
-
-        .hero img:hover {
-            animation-play-state: paused;
-            transform: scale(1.05);
-        }
-
-        .custom-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .custom-card-certification {
-            background: white;
-            aspect-ratio: 1753 / 1238;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.158);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            width: 90%;
+            width: 70%;
+            max-width: 250px !important;
             margin: 0 auto 30px auto;
             display: block;
         }
-
-        .custom-card-certification img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .custom-card:hover, .custom-card-certification:hover {
-            transform: translateY(-10px);
-            transform: scale(1.05);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-        }
-
-        .fs-1 {
-            transition: transform 0.3s ease;
-            display: inline-block;
-        }
-
-        .custom-card:hover .fs-1 {
-            transform: scale(1.2) rotate(5deg);
-        }
-
-        .hero {
-            background-color: #212529;
-            color: white;
-            padding: 120px 0;
-        }
-
-        .hero img {
-            transition: transform 0.5s ease;
-            max-width: 320px;
-            border: 5px solid rgba(255, 255, 255, 0.1);
-        }
-
-        #services { background-color: #ffffff; }
-        #projects { background-color: #f8f9fa; }
-
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-            border-radius: 15px 15px 0 0;
-        }
-
-        .project-body {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        #contact { background-color: #ffffff; }
-        
-        .contact-info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info-icon {
-            width: 50px;
-            height: 50px;
-            background-color: #212529;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin-right: 15px;
-            font-size: 1.2rem;
-        }
-
-        .form-control:focus {
-            border-color: #212529;
-            box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.1);
-        }
-
-        @media (max-width: 767px) {
-            section { padding: 60px 0; }
-        
-            .hero img {
-                width: 70%;
-                max-width: 250px !important;
-                margin: 0 auto 30px auto;
-                display: block;
-            }
-
-            .hero h1 { font-size: 2.2rem; }
-        
-            .col-md-3, .col-md-4, .col-lg-5 {
-                margin-bottom: 30px;
-            }
-        }
-    </style>
+        .hero h1 { font-size: 2.2rem; }
+        .col-sm-12 { width: 100%; }
+    }
+</style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-        <a class="navbar-brand fw-bold" href="#">JKJ.</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-            <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
-            <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            </ul>
-        </div>
+            <a class="navbar-brand fw-bold" href="#">JKJ.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-<!-- 🔹 Home Section -->
-<section id="home" class="hero">
-    <div class="container">
-        <div class="row align-items-center text-center text-md-start">
-            <div class="col-md-6 order-last order-md-first">
-                <h1 class="display-4 fw-bold">Hi, I'm Jheric Kent 👋</h1>
-                <p class="lead opacity-75">Aspiring BSIT Student & Multi-disciplinary Developer</p>
-                <div class="mt-4">
-                    <a href="#projects" class="btn btn-light btn-lg me-2">View Work</a>
-                    <a href="#contact" class="btn btn-outline-light btn-lg">Contact Me</a>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center text-center text-md-start">
+                <div class="col-md-6 order-last order-md-first">
+                    <h1 class="display-4 fw-bold">Hi, I'm Jheric Kent 👋</h1>
+                    <p class="lead opacity-75">Aspiring BSIT Student & Multi-disciplinary Developer</p>
+                    <div class="mt-4">
+                        <a href="#projects" class="btn btn-light btn-lg me-2">View Work</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">Contact Me</a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6 text-center order-first order-md-last">
-                <img src="https://avatars.githubusercontent.com/u/239331688?v=4" class="img-fluid rounded-circle mb-4 mb-md-0" alt="Profile">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 🔹 Services Section -->
-<section id="services">
-    <div class="container">
-        <h2 class="text-center mb-5 fw-bold">My Expertise</h2>
-        <div class="row g-4 text-center">
-            <div class="col-md-3 col-sm-6">
-                <div class="custom-card">
-                    <div class="fs-1 mb-3">🌐</div>
-                    <h5 class="fw-bold">Web Dev</h5>
-                    <p class="text-muted">Full-stack builds using HTML, CSS, JS, and MySQL database management.</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="custom-card">
-                    <div class="fs-1 mb-3">💻</div>
-                    <h5 class="fw-bold">Software</h5>
-                    <p class="text-muted">Logic-driven application scripting and automation in Java & Python.</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="custom-card">
-                    <div class="fs-1 mb-3">📸</div>
-                    <h5 class="fw-bold">Multimedia</h5>
-                    <p class="text-muted">Professional Photography, Video Editing, and Photoshop manipulation.</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="custom-card">
-                    <div class="fs-1 mb-3">✍️</div>
-                    <h5 class="fw-bold">Technical Writing</h5>
-                    <p class="text-muted">Clear documentation, creative storytelling, and content strategy.</p>
+                <div class="col-md-6 text-center order-first order-md-last">
+                    <img src="https://avatars.githubusercontent.com/u/239331688?v=4" class="img-fluid rounded-circle mb-4 mb-md-0" alt="Profile">
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- 🔹 Certification Section -->
-<section id="certifications" class="section-padding bg-light">
-    <div class="container">
-        <h2 class="text-center mb-5 fw-bold">Certifications</h2>
-        <div class="row text-center">
-            <div class="row g-4">
-                <div class="col-md-6 col-sm-6">
-                    <div class="custom-card-certification p-0 overflow-hidden">
-                        <img src="Images/Pearson-Certificate.png" class="card-img-top" alt="Certificate">
+    <section id="services">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">My Expertise</h2>
+            <div class="row g-4 text-center">
+                <div class="col-md-3 col-sm-6">
+                    <div class="custom-card">
+                        <div class="fs-1 mb-3">🌐</div>
+                        <h5 class="fw-bold">Web Dev</h5>
+                        <p class="text-muted">Full-stack builds using HTML, CSS, JS, and MySQL database management.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="custom-card">
+                        <div class="fs-1 mb-3">💻</div>
+                        <h5 class="fw-bold">Software</h5>
+                        <p class="text-muted">Logic-driven application scripting and automation in Java & Python.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="custom-card">
+                        <div class="fs-1 mb-3">📸</div>
+                        <h5 class="fw-bold">Multimedia</h5>
+                        <p class="text-muted">Professional Photography, Video Editing, and Photoshop manipulation.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="custom-card">
+                        <div class="fs-1 mb-3">✍️</div>
+                        <h5 class="fw-bold">Technical Writing</h5>
+                        <p class="text-muted">Clear documentation, creative storytelling, and content strategy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Certifications</h2>
+            <div class="row g-4 text-center">
+                <div class="col-md-6 col-sm-12">
+                    <div class="custom-card-certification p-0">
+                        <img src="images/Pearson-Certificate.png" alt="Pearson Certificate">
                         <a href="https://www.credly.com/badges/6b76603c-387a-4e6d-a18b-986fe5b54aed/public_url" target="_blank" class="stretched-link"></a>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-sm-6">
-                    <div class="custom-card-certification p-0 overflow-hidden">
-                        <img src="https://api2.sololearn.com/v2/certificates/CC-2A7GROBN/image/jpg?t=638998269838284330" class="card-img-top" alt="Certificate">
+                <div class="col-md-6 col-sm-12">
+                    <div class="custom-card-certification p-0">
+                        <img src="https://api2.sololearn.com/v2/certificates/CC-2A7GROBN/image/jpg?t=638998269838284330" alt="SoloLearn Certificate">
                         <a href="https://www.sololearn.com/certificates/CC-2A7GROBN" target="_blank" class="stretched-link"></a>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-sm-6">
-                    <div class="custom-card-certification p-0 overflow-hidden">
-                        <img src="https://api2.sololearn.com/v2/certificates/CC-0PS1HMBI/image/jpg?t=638998272901058800" class="card-img-top" alt="Certificate">
+                <div class="col-md-6 col-sm-12">
+                    <div class="custom-card-certification p-0">
+                        <img src="https://api2.sololearn.com/v2/certificates/CC-0PS1HMBI/image/jpg?t=638998272901058800" alt="SoloLearn Certificate">
                         <a href="https://www.sololearn.com/en/certificates/CC-0PS1HMBI" target="_blank" class="stretched-link"></a>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-sm-6">
-                    <div class="custom-card-certification p-0 overflow-hidden">
-                        <img src="https://api2.sololearn.com/v2/certificates/CC-HXDZTCJW/image/jpg?t=638998274803676410" class="card-img-top" alt="Certificate">
+                <div class="col-md-6 col-sm-12">
+                    <div class="custom-card-certification p-0">
+                        <img src="https://api2.sololearn.com/v2/certificates/CC-HXDZTCJW/image/jpg?t=638998274803676410" alt="SoloLearn Certificate">
                         <a href="https://www.sololearn.com/certificates/CC-HXDZTCJW" target="_blank" class="stretched-link"></a>
                     </div>
                 </div>
-
-                
-
-                
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- 🔹 Education Section -->
-<section id="education" class="section-padding">
+<section id="education">
     <div class="container">
         <h2 class="text-center mb-5 fw-bold">Education</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row g-4 justify-content-center">
+            
+            <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="custom-card">
-                    <h4>Bachelor of Science in Information Technology</h4>
-                    <p class="mb-1"><strong>University / College Name</strong></p>
-                    <p class="text-muted">2023 – Present</p>
-                    <p>
-                        Focused on web development, programming fundamentals,
-                        and information security concepts.
-                    </p>
+                    <span class="badge bg-dark mb-2 w-25">Tertiary</span>
+                    <h5 class="fw-bold">BS in Information Technology</h5>
+                    <p class="mb-1 text-dark small"><strong>University of Mindanao</strong></p>
+                    <p class="text-muted extra-small">2023 – Present</p>
+                    <p class="small">Focused on web development and programming fundamentals.</p>
                 </div>
             </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="custom-card">
+                    <span class="badge bg-secondary mb-2 w-25">Secondary</span>
+                    <h5 class="fw-bold">Senior High School</h5>
+                    <p class="mb-1 text-dark small"><strong>Rizal Memorial Colleges, Inc.</strong></p>
+                    <p class="text-muted extra-small">Graduated 2023</p>
+                    <p class="small">Completed academic track with preparatory technical skills.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="custom-card">
+                    <span class="badge bg-light text-dark border mb-2 w-25">Primary</span>
+                    <h5 class="fw-bold">Elementary Education</h5>
+                    <p class="mb-1 text-dark small"><strong>Pedro S. Carriedo ES</strong></p>
+                    <p class="text-muted extra-small">Foundation Years</p>
+                    <p class="small">Foundational years of basic education and character building.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 
-<!-- 🔹 Projects Section -->
-<section id="projects">
-    <div class="container">
-        <h2 class="text-center mb-5 fw-bold">Featured Projects</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="custom-card p-0 overflow-hidden">
-                    <img src="images/Google-Sites.png" class="card-img-top" alt="Google Sites Portfolio">
-                    <div class="project-body">
-                        <h5 class="fw-bold">Google Sites Portfolio</h5>
-                        <p class="text-muted">A google site portfolio project.</p>
-                        <a href="https://sites.google.com/umindanao.edu.ph/japona558573/home" target="_blank" class="btn btn-outline-dark btn-sm w-100">View Site</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="custom-card p-0 overflow-hidden">
-                    <img src="images/Appointer.png" class="card-img-top" alt="Appointer">
-                    <div class="project-body">
-                        <h5 class="fw-bold">Appointer</h5>
-                        <p class="text-muted">Medical appointment scheduling system.</p>
-                        <a href="https://github.com/JKJapona/Appointer" target="_blank" class="btn btn-outline-dark btn-sm w-100">View Repo</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="custom-card p-0 overflow-hidden">
-                    <img src="images/Login.png" class="card-img-top" alt="Login System">
-                    <div class="project-body">
-                        <h5 class="fw-bold">Auth System</h5>
-                        <p class="text-muted">Secure frontend dashboard login interface.</p>
-                        <a href="https://github.com/JKJapona/Japona-Login_Dashboard-IT9" target="_blank" class="btn btn-outline-dark btn-sm w-100">View Repo</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 🔹 Contact Section -->
-<section id="contact">
-    <div class="container">
-        <h2 class="text-center mb-5 fw-bold">Get In Touch</h2>
-        <div class="row g-5">
-            <div class="col-lg-5">
-                <h3 class="fw-bold">Let's work together</h3>
-                <p class="text-muted mb-5">Have a project in mind? Reach out and let's make it happen.</p>
-                
-                <div class="contact-info-item">
-                    <div class="contact-info-icon">📍</div>
-                    <div><strong>Location</strong><p class="mb-0 text-muted">Davao City, Philippines</p></div>
-                </div>
-                <div class="contact-info-item">
-                    <div class="contact-info-icon">📧</div>
-                    <div><strong>Email</strong><p class="mb-0 text-muted">j.japona.558573@umindanao.edu.ph</p></div>
-                </div>
-                <div class="contact-info-item">
-                    <div class="contact-info-icon">📱</div>
-                    <div><strong>Github</strong><p class="mb-0"><a href="https://github.com/JKJapona" target="_blank" class="text-muted text-decoration-none hover-link">github.com/JKJapona</a></p></div>
-                </div>
-            </div>
-
-            <div class="col-lg-7">
-                <div class="custom-card">
-                    <form>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label small fw-bold">Name</label>
-                            <input type="text" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label small fw-bold">Email</label>
-                            <input type="email" class="form-control" placeholder="Email Address" required>
+    <section id="projects">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Featured Projects</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="custom-card p-0 overflow-hidden">
+                        <img src="images/Google-Sites.png" class="card-img-top" alt="Google Sites Portfolio">
+                        <div class="project-body">
+                            <h5 class="fw-bold">Google Sites Portfolio</h5>
+                            <p class="text-muted">A google site portfolio project.</p>
+                            <a href="https://sites.google.com/umindanao.edu.ph/japona558573/home" target="_blank" class="btn btn-outline-dark btn-sm w-100">View Site</a>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label small fw-bold">Message</label>
-                        <textarea class="form-control" rows="5" placeholder="How can I help you?" required></textarea>
+                </div>
+                <div class="col-md-4">
+                    <div class="custom-card p-0 overflow-hidden">
+                        <img src="images/Appointer.png" class="card-img-top" alt="Appointer">
+                        <div class="project-body">
+                            <h5 class="fw-bold">Appointer</h5>
+                            <p class="text-muted">Medical appointment scheduling system.</p>
+                            <a href="https://github.com/JKJapona/Appointer" target="_blank" class="btn btn-outline-dark btn-sm w-100">View Repo</a>
+                        </div>
                     </div>
-                        <button type="submit" class="btn btn-dark btn-lg w-100">Send Message</button>
-                    </form>
+                </div>
+                <div class="col-md-4">
+                    <div class="custom-card p-0 overflow-hidden">
+                        <img src="images/Login.png" class="card-img-top" alt="Login System">
+                        <div class="project-body">
+                            <h5 class="fw-bold">Auth System</h5>
+                            <p class="text-muted">Secure frontend dashboard login interface.</p>
+                            <a href="https://github.com/JKJapona/Japona-Login_Dashboard-IT9" target="_blank" class="btn btn-outline-dark btn-sm w-100">View Repo</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<footer class="text-center py-4 bg-dark text-white">
-    <div class="container">
-        <div class="mb-3">
-            <a href="#" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="text-white me-3 fs-4"><i class="bi bi-github"></i></a>
-            <a href="#" class="text-white me-3 fs-4"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="text-white fs-4"><i class="bi bi-envelope-fill"></i></a>
-        </div>
-        <p class="mb-0 small">© 2026 Jheric Kent Japona | All Rights Reserved.</p>
-    </div>
-</footer>
+    </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Get In Touch</h2>
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <h3 class="fw-bold">Let's work together</h3>
+                    <p class="text-muted mb-5">Have a project in mind? Reach out and let's make it happen.</p>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">📍</div>
+                        <div><strong>Location</strong><p class="mb-0 text-muted">Davao City, Philippines</p></div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">📧</div>
+                        <div><strong>Email</strong><p class="mb-0 text-muted">j.japona.558573@umindanao.edu.ph</p></div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">📱</div>
+                        <div><strong>Github</strong><p class="mb-0"><a href="https://github.com/JKJapona" target="_blank" class="text-muted text-decoration-none">github.com/JKJapona</a></p></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="custom-card">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label small fw-bold">Name</label>
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label small fw-bold">Email</label>
+                                    <input type="email" class="form-control" placeholder="Email Address" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Message</label>
+                                <textarea class="form-control" rows="5" placeholder="How can I help you?" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark btn-lg w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-4 bg-dark text-white">
+        <div class="container">
+            <div class="mb-3">
+                <a href="#" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
+                <a href="https://github.com/JKJapona" target="_blank" class="text-white me-3 fs-4"><i class="bi bi-github"></i></a>
+                <a href="#" class="text-white me-3 fs-4"><i class="bi bi-linkedin"></i></a>
+                <a href="mailto:j.japona.558573@umindanao.edu.ph" class="text-white fs-4"><i class="bi bi-envelope-fill"></i></a>
+            </div>
+            <p class="mb-0 small">© 2026 Jheric Kent Japona | All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
