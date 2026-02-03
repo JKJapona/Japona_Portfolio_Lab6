@@ -1,309 +1,301 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Portfolio - Jheric Kent Japona</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Portfolio - Jheric Kent Japona</title>
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-    <style>
-    :root {
-        --primary-dark: #212529;
-        --bg-light: #f8f9fa;
-        --transition-main: all 0.3s ease;
-    }
+        <style>
+        :root {
+            --primary-dark: #212529;
+            --bg-light: #f8f9fa;
+            --transition-main: all 0.3s ease;
+        }
 
-    html {
-        scroll-behavior: smooth;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    body {
-        padding-top: 56px;
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        color: #333;
-    }
+        body {
+            padding-top: 56px;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #333;
+        }
 
-    html, body {
-        overflow-x: hidden;
-        width: 100%;
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+            background-color: #212529;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        #services, #education, #contact {
+            background-color: #ffffff !important;
+        }
+
+        #certifications, #projects {
+            background-color: #f8f9fa !important;
+        }
+
+        footer {
+        background-color: #212529 !important;
         position: relative;
-        background-color: #212529;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-    }
+        }   
 
-    #services, #education, #contact {
-        background-color: #ffffff !important;
-    }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
 
-    #certifications, #projects {
-        background-color: #f8f9fa !important;
-    }
+        section {
+            padding: 100px 0;
+            scroll-margin-top: 50px;
+        }
 
-    footer {
-    background-color: #212529 !important;
-    position: relative;
-}
+        .navbar-nav .nav-link {
+            position: relative;
+            padding: 8px 15px;
+            transition: color 0.3s ease;
+        }
 
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    section {
-        padding: 100px 0;
-        scroll-margin-top: 50px;
-    }
-
-    .navbar-nav .nav-link {
-        position: relative;
-        padding: 8px 15px;
-        transition: color 0.3s ease;
-    }
-
-    .navbar-nav .nav-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 0;
-        left: 50%;
-        background-color: #fff;
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-    }
-
-    .navbar-nav .nav-link:hover::after {
-        width: 80%;
-    }
-
-    .navbar-nav .nav-link:hover {
-        color: #fff !important;
-    }
-
-    .hero {
-        background-color: var(--primary-dark);
-        color: white;
-        padding: 120px 0;
-    }
-
-    .hero img {
-        max-width: 320px;
-        border: 5px solid rgba(255, 255, 255, 0.1);
-        animation: bobbing 3s ease-in-out infinite;
-        transition: transform 0.5s ease;
-    }
-
-    .hero img:hover {
-        transform: scale(1.05);
-    }
-
-    .hero .btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
-    }
-
-    .custom-card, 
-    .custom-card-certification {
-        background: white;
-        border-radius: 15px;
-        transition: var(--transition-main);
-        display: flex;
-        flex-direction: column;
-    }
-
-    .custom-card {
-        padding: 30px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        height: 100%;
-    }
-
-/* 1. Prepare the card for the shine (hidden overflow is key) */
-.custom-card, 
-.custom-card-certification {
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* 2. Create the shine element */
-.custom-card::before,
-.custom-card-certification::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%; /* Start off-screen */
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-        to right, 
-        rgba(255, 255, 255, 0) 0%, 
-        rgba(255, 255, 255, 0.3) 50%, 
-        rgba(255, 255, 255, 0) 100%
-    );
-    transform: skewX(-25deg); /* Slant the shine */
-    transition: none;
-}
-
-/* 3. Trigger the lift and the shine on hover */
-.custom-card:hover, 
-.custom-card-certification:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-}
-
-.custom-card:hover::before,
-.custom-card-certification:hover::before {
-    left: 150%; /* Sweep across to the other side */
-    transition: left 0.7s ease-in-out;
-}
-
-    .custom-card .fs-1 {
-        transition: var(--transition-main);
-        display: inline-block;
-    }
-
-    .custom-card:hover .fs-1 {
-        transform: scale(1.2) rotate(5deg);
-    }
-
-    .custom-card-certification {
-        width: 100%; 
-        aspect-ratio: 1753 / 1238;
-        margin-bottom: 20px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .custom-card-certification img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    #projects .card-img-top {
-        height: 200px;
-        object-fit: cover;
-        border-radius: 15px 15px 0 0;
-    }
-
-    .project-body {
-        padding: 20px;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .project-body .btn:hover {
-        background-color: var(--primary-dark);
-        color: white;
-        transform: scale(1.02);
-    }
-
-    .contact-info-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1.5rem;
-    }
-
-    .contact-info-icon {
-        width: 50px;
-        height: 50px;
-        background-color: var(--primary-dark);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        margin-right: 15px;
-        font-size: 1.2rem;
-    }
-
-    .form-control:focus {
-        border-color: var(--primary-dark);
-        box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.1);
-    }
-
-    .btn {
-        transition: var(--transition-main) !important;
-    }
-
-    #services { background-color: #ffffff; }
-    #projects { background-color: var(--bg-light); }
-    #contact { background-color: #ffffff; }
-
-    @keyframes bobbing {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-    }
-
-    @media (max-width: 991px) {
         .navbar-nav .nav-link::after {
-            display: none;
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
-        .navbar-nav .nav-link:hover {
-            background-color: rgba(255,255,255,0.1);
-            padding-left: 25px;
-        }
-    }
 
-    @media (max-width: 767px) {
-        section { padding: 60px 0; }
+        .navbar-nav .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #fff !important;
+        }
+
+        .hero {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 120px 0;
+        }
+
         .hero img {
-            width: 70%;
-            max-width: 250px !important;
-            margin: 0 auto 30px auto;
+            max-width: 320px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            animation: bobbing 3s ease-in-out infinite;
+            transition: transform 0.5s ease;
+        }
+
+        .hero img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .custom-card, 
+        .custom-card-certification {
+            background: white;
+            border-radius: 15px;
+            transition: var(--transition-main);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .custom-card {
+            padding: 30px;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+
+        .custom-card:hover, 
+        .custom-card-certification:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-card .fs-1 {
+            transition: var(--transition-main);
+            display: inline-block;
+        }
+
+        .custom-card:hover .fs-1 {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .custom-card-certification {
+            width: 100%; 
+            aspect-ratio: 1753 / 1238;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-card:hover .project-body .btn {
+            background-color: var(--primary-dark);
+            color: white;
+            border-color: var(--primary-dark);
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-body .btn {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        }
+
+        .custom-card-certification img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
-        .hero h1 { font-size: 2.2rem; }
-        .col-sm-12 { width: 100%; }
-    }
 
-    .navbar {
-        z-index: 9999 !important;
-    }
+        .education-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
 
-    .navbar-brand {
-        font-size: 1.8rem;
-        letter-spacing: -1px;
-        background: linear-gradient(45deg, #fff, #adb5bd);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition: var(--transition-main);
-    }
+        .custom-card:hover .education-img-container img {
+            transform: scale(1.05);
+        }
+        #projects .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+        }
 
-    .navbar-brand:hover {
-        transform: scale(1.1);
-        filter: brightness(1.2);
-    }
+        .project-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-    .navbar-toggler:focus {
-        box-shadow: none !important;
-        outline: none !important;
-    }
+        .project-body .btn:hover {
+            background-color: var(--primary-dark);
+            color: white;
+            transform: scale(1.02);
+        }
 
-@media (max-width: 991px) {
-    body {
-        padding-top: 56px;
-    }
-    
-    section {
-        scroll-margin-top: 56px; 
-        padding: 60px 0;
-    }
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
 
-    .hero {
-        padding: 40px 0;
-    }
-}
-</style>
-</head>
+        .contact-info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-dark);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-dark);
+            box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.1);
+        }
+
+        .btn {
+            transition: var(--transition-main) !important;
+        }
+
+        #services { background-color: #ffffff; }
+        #projects { background-color: var(--bg-light); }
+        #contact { background-color: #ffffff; }
+
+        @keyframes bobbing {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 991px) {
+            .navbar-nav .nav-link::after {
+                display: none;
+            }
+            .navbar-nav .nav-link:hover {
+                background-color: rgba(255,255,255,0.1);
+                padding-left: 25px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            section { padding: 60px 0; }
+            .hero img {
+                width: 70%;
+                max-width: 250px !important;
+                margin: 0 auto 30px auto;
+                display: block;
+            }
+            .hero h1 { font-size: 2.2rem; }
+            .col-sm-12 { width: 100%; }
+        }
+
+        .navbar {
+            z-index: 9999 !important;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+            background: linear-gradient(45deg, #fff, #adb5bd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition-main);
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        @media (max-width: 991px) {
+            body {
+                padding-top: 56px;
+            }
+            
+            section {
+                scroll-margin-top: 56px; 
+                padding: 60px 0;
+            }
+
+            .hero {
+                padding: 40px 0;
+            }
+        }
+
+        
+        </style>
+    </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -412,42 +404,58 @@
     </section>
 
     <section id="education">
-        <div class="container">
-            <h2 class="text-center mb-5 fw-bold">Education</h2>
-            <div class="row g-4 justify-content-center">
-                
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="custom-card">
-                        <span class="badge bg-dark mb-2 w-25">Tertiary</span>
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Education</h2>
+        <div class="row g-4 justify-content-center">
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="custom-card h-100 p-0 overflow-hidden">
+                    <div class="education-img-container">
+                        <img src="Images/UM.png" alt="University of Mindanao">
+                    </div>
+                    <div class="p-4">
+                        <span class="badge bg-dark mb-2">Tertiary</span>
                         <h5 class="fw-bold">BS in Information Technology</h5>
                         <p class="mb-1 text-dark small"><strong>University of Mindanao</strong></p>
                         <p class="text-muted extra-small">2023 – Present</p>
                         <p class="small">Focused on computers and programming fundamentals.</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="custom-card">
-                        <span class="badge bg-secondary mb-2 w-25">Secondary</span>
+            <div class="col-lg-4 col-md-6">
+                <div class="custom-card h-100 p-0 overflow-hidden">
+                    <div class="education-img-container">
+                        <img src="Images/RMC.png" alt="Rizal Memorial Colleges">
+                    </div>
+                    <div class="p-4">
+                        <span class="badge bg-secondary mb-2">Secondary</span>
                         <h5 class="fw-bold">Junior & Senior High School</h5>
                         <p class="mb-1 text-dark small"><strong>Rizal Memorial Colleges, Inc.</strong></p>
-                        <p class="text-muted extra-small">2018 - 2023</p> <p class="small">Completed full secondary education with an academic track and preparatory technical skills.</p>
+                        <p class="text-muted extra-small">2018 - 2023</p>
+                        <p class="small">Completed full secondary education with technical skills.</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="custom-card">
-                        <span class="badge bg-light text-dark border mb-2 w-25">Primary</span>
+            <div class="col-lg-4 col-md-6">
+                <div class="custom-card h-100 p-0 overflow-hidden">
+                    <div class="education-img-container">
+                        <img src="Images/PSCES.png" alt="Pedro S. Carriedo ES">
+                    </div>
+                    <div class="p-4">
+                        <span class="badge bg-light text-dark border mb-2">Primary</span>
                         <h5 class="fw-bold">Elementary Education</h5>
                         <p class="mb-1 text-dark small"><strong>Pedro S. Carriedo ES</strong></p>
                         <p class="text-muted extra-small">2012 - 2018</p>
                         <p class="small">Foundational years of basic education and character building.</p>
                     </div>
                 </div>
-
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="projects">
         <div class="container">
@@ -547,5 +555,16 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const toggler = document.querySelector('.navbar-toggler');
+                if (window.getComputedStyle(toggler).display !== 'none') {
+                    toggler.click();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
