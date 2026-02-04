@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Portfolio - Jheric Kent Japona</title>
+        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'><path d='M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z'/><path fill-rule='evenodd' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z'/></svg>">
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -107,7 +108,8 @@
         }
 
         .custom-card, 
-        .custom-card-certification {
+        .custom-card-certification,
+        .custom-card-certification img{
             background: white;
             border-radius: 15px;
             transition: var(--transition-main);
@@ -126,6 +128,10 @@
         .custom-card-certification:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-card-certification:hover img {
+            transform: scale(1.05);
         }
 
         .custom-card .fs-1 {
@@ -165,7 +171,7 @@
             display: block;
         }
 
-        .education-img-container img {
+        .img-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -173,7 +179,7 @@
             transition: transform 0.5s ease;
         }
 
-        .custom-card:hover .education-img-container img {
+        .custom-card:hover .img-container img {
             transform: scale(1.05);
         }
         #projects .card-img-top {
@@ -291,9 +297,68 @@
             .hero {
                 padding: 40px 0;
             }
+
+            .navbar {
+                padding-top: 5px !important;
+                padding-bottom: 5px !important;
+                min-height: auto !important;
+            }
+
+            .navbar-toggler {
+                padding: 4px 8px !important;
+                font-size: 0.9rem !important;
+            }
+
+            .custom-card-certification:active .cert-overlay {
+                opacity: 1;
+            }
         }
 
-        
+        .custom-card-certification {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(33, 37, 41, 0.50); /* Dark matching your theme */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .custom-card-certification:hover .cert-overlay {
+            opacity: 1;
+        }
+
+        .overlay-buttons a {
+            color: rgb(255, 255, 255);
+            background: rgba(0, 0, 0, 0.5);
+            width: 45px;
+            height: 45px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 8px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .overlay-buttons a:hover {
+            background: white;
+            color: #212529;
+            transform: translateY(-3px);
+        }
         </style>
     </head>
 
@@ -371,37 +436,66 @@
         </div>
     </section>
 
-    <section id="certifications" class="bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5 fw-bold">Certifications</h2>
-            <div class="row g-4 text-center">
-                <div class="col-md-6 col-sm-12">
-                    <div class="custom-card-certification p-0">
-                        <img src="Images/Pearson-Certificate.png" alt="Pearson Certificate">
-                        <a href="https://www.credly.com/badges/6b76603c-387a-4e6d-a18b-986fe5b54aed/public_url" target="_blank" class="stretched-link"></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="custom-card-certification p-0">
-                        <img src="https://api2.sololearn.com/v2/certificates/CC-2A7GROBN/image/jpg?t=638998269838284330" alt="SoloLearn Certificate">
-                        <a href="https://www.sololearn.com/certificates/CC-2A7GROBN" target="_blank" class="stretched-link"></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="custom-card-certification p-0">
-                        <img src="https://api2.sololearn.com/v2/certificates/CC-0PS1HMBI/image/jpg?t=638998272901058800" alt="SoloLearn Certificate">
-                        <a href="https://www.sololearn.com/en/certificates/CC-0PS1HMBI" target="_blank" class="stretched-link"></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="custom-card-certification p-0">
-                        <img src="https://api2.sololearn.com/v2/certificates/CC-HXDZTCJW/image/jpg?t=638998274803676410" alt="SoloLearn Certificate">
-                        <a href="https://www.sololearn.com/certificates/CC-HXDZTCJW" target="_blank" class="stretched-link"></a>
+<section id="certifications" class="bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Certifications</h2>
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-md-5 col-sm-12">
+                <div class="custom-card-certification p-0">
+                    <img src="Images/Pearson-Certificate.png" alt="Pearson Certificate">
+                    <div class="cert-overlay">
+                        <div class="overlay-buttons">
+                            <a href="Images/Pearson-Certificate.png" target="_blank" title="View"><i class="bi bi-eye"></i></a>
+                            <a href="Images/Pearson-Certificate.png" download title="Download"><i class="bi bi-download"></i></a>
+                            <a href="https://www.credly.com/badges/6b76603c-387a-4e6d-a18b-986fe5b54aed/public_url" target="_blank" title="Verify Link"><i class="bi bi-link-45deg"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-5 col-sm-12">
+                <div class="custom-card-certification p-0">
+                    <img src="https://api2.sololearn.com/v2/certificates/CC-2A7GROBN/image/jpg?t=638998269838284330" alt="SoloLearn Certificate">
+                    <div class="cert-overlay">
+                        <div class="overlay-buttons">
+                            <a href="https://api2.sololearn.com/v2/certificates/CC-2A7GROBN/image/jpg?t=638998269838284330" target="_blank" title="View"><i class="bi bi-eye"></i></a>
+                            <a href="https://api2.sololearn.com/v2/certificates/CC-2A7GROBN/image/jpg?t=638998269838284330" download="SoloLearn_Cert.jpg" title="Download"><i class="bi bi-download"></i></a>
+                            <a href="https://www.sololearn.com/certificates/CC-2A7GROBN" target="_blank" title="Verify Link"><i class="bi bi-link-45deg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5 col-sm-12">
+                <div class="custom-card-certification p-0">
+                    <img src="https://api2.sololearn.com/v2/certificates/CC-0PS1HMBI/image/jpg?t=638998272901058800" alt="SoloLearn Certificate">
+                    <div class="cert-overlay">
+                        <div class="overlay-buttons">
+                            <a href="https://api2.sololearn.com/v2/certificates/CC-0PS1HMBI/image/jpg?t=638998272901058800" target="_blank" title="View"><i class="bi bi-eye"></i></a>
+                            <a href="https://api2.sololearn.com/v2/certificates/CC-0PS1HMBI/image/jpg?t=638998272901058800" download="SoloLearn_Cert_2.jpg" title="Download"><i class="bi bi-download"></i></a>
+                            <a href="https://www.sololearn.com/en/certificates/CC-0PS1HMBI" target="_blank" title="Verify Link"><i class="bi bi-link-45deg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5 col-sm-12">
+                <div class="custom-card-certification p-0">
+                    <img src="https://api2.sololearn.com/v2/certificates/CC-HXDZTCJW/image/jpg?t=638998274803676410" alt="SoloLearn Certificate">
+                    <div class="cert-overlay">
+                        <div class="overlay-buttons">
+                            <a href="https://api2.sololearn.com/v2/certificates/CC-HXDZTCJW/image/jpg?t=638998274803676410" target="_blank" title="View"><i class="bi bi-eye"></i></a>
+                            <a href="https://api2.sololearn.com/v2/certificates/CC-HXDZTCJW/image/jpg?t=638998274803676410" download="SoloLearn_Cert_3.jpg" title="Download"><i class="bi bi-download"></i></a>
+                            <a href="https://www.sololearn.com/certificates/CC-HXDZTCJW" target="_blank" title="Verify Link"><i class="bi bi-link-45deg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="education">
         <div class="container">
@@ -410,7 +504,7 @@
                 
                 <div class="col-lg-4 col-md-6">
                     <div class="custom-card h-100 p-0 overflow-hidden">
-                        <div class="education-img-container">
+                        <div class="img-container">
                             <img src="Images/UM.png" alt="University of Mindanao">
                         </div>
                         <div class="p-4">
@@ -425,7 +519,7 @@
 
                 <div class="col-lg-4 col-md-6">
                     <div class="custom-card h-100 p-0 overflow-hidden">
-                        <div class="education-img-container">
+                        <div class="img-container">
                             <img src="Images/RMC.png" alt="Rizal Memorial Colleges">
                         </div>
                         <div class="p-4">
@@ -440,7 +534,7 @@
 
                 <div class="col-lg-4 col-md-6">
                     <div class="custom-card h-100 p-0 overflow-hidden">
-                        <div class="education-img-container">
+                        <div class="img-container">
                             <img src="Images/PSCES.png" alt="Pedro S. Carriedo ES">
                         </div>
                         <div class="p-4">
@@ -462,7 +556,9 @@
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="custom-card p-0 overflow-hidden">
-                        <img src="Images/Google-Sites.png" class="card-img-top" alt="Google Sites Portfolio">
+                        <div class="img-container">
+                            <img src="Images/Google-Sites.png" class="card-img-top" alt="Google Sites Portfolio">
+                        </div>
                         <div class="project-body">
                             <h5 class="fw-bold">Google Sites Portfolio</h5>
                             <p class="text-muted">A google site portfolio project.</p>
@@ -472,7 +568,9 @@
                 </div>
                 <div class="col-md-4">
                     <div class="custom-card p-0 overflow-hidden">
-                        <img src="Images/Appointer.png" class="card-img-top" alt="Appointer">
+                        <div class="img-container">
+                            <img src="Images/Appointer.png" class="card-img-top" alt="Appointer">
+                        </div>
                         <div class="project-body">
                             <h5 class="fw-bold">Appointer</h5>
                             <p class="text-muted">Medical appointment scheduling system.</p>
@@ -482,7 +580,9 @@
                 </div>
                 <div class="col-md-4">
                     <div class="custom-card p-0 overflow-hidden">
-                        <img src="Images/Login.png" class="card-img-top" alt="Login System">
+                        <div class="img-container">
+                            <img src="Images/Login.png" class="card-img-top" alt="Login System">
+                        </div>
                         <div class="project-body">
                             <h5 class="fw-bold">Auth System</h5>
                             <p class="text-muted">Secure frontend dashboard login interface.</p>
